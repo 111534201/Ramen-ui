@@ -1,0 +1,181 @@
+/* src/pages/EventListPage.css */
+
+/* --- 基本頁面容器 (復用 ShopListPage) --- */
+.event-list-page-container {
+    max-width: 1400px; /* 頁面最大寬度 */
+    margin: 0 auto;    /* 水平居中 */
+    padding: 1.5rem;   /* 頁面內邊距 */
+    font-family: sans-serif; /* 基礎字體 */
+}
+
+/* --- 頁面標題區塊 (復用 ShopListPage) --- */
+.page-header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1.5rem;
+}
+
+.page-header h1 {
+    text-align: center;
+    margin-bottom: 1.5rem; /* 與下方篩選器的距離 */
+    color: #333;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+/* --- 篩選/排序控制項 (復用 ShopListPage) - 如果您後續添加篩選器 --- */
+.filter-sort-controls {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 0; /* 由 fieldset 控制內邊距 */
+    margin-top: 1rem; /* 與標題的距離 */
+}
+
+.filter-group {
+    border: none;
+    padding: 1rem 1.5rem;
+    margin: 0;
+}
+
+.filter-group legend {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #495057;
+    padding: 0 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.controls-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.control-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.control-item label {
+    font-weight: 500;
+    color: #495057;
+    white-space: nowrap;
+}
+
+.control-item select,
+.control-item input[type="date"] /* 如果添加日期篩選器 */
+{
+    padding: 0.6rem 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    background-color: #fff;
+    min-width: 160px;
+    cursor: pointer;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.control-item select:focus,
+.control-item input[type="date"]:focus {
+   border-color: #80bdff;
+   outline: 0;
+   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+.control-item select:disabled,
+.control-item input[type="date"]:disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+.reset-button {
+    /* (樣式與 ShopListPage 相同) */
+    padding: 0.6rem 1.2rem;
+    background-color: #6c757d;
+    color: white;
+    border: 1px solid #6c757d;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    margin-left: auto;
+}
+.reset-button:hover:not(:disabled) {
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+.reset-button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+
+/* --- 加載/錯誤/無結果提示 (復用 ShopListPage) --- */
+.list-loading,
+.list-error,
+.list-no-results {
+    text-align: center;
+    padding: 3rem 1rem;
+    font-size: 1.1rem;
+    color: #6c757d;
+}
+
+.list-loading-update { /* 用於加載下一頁時的提示 */
+    font-style: italic;
+    text-align: center;
+    padding: 0.5rem;
+    margin: 1rem 0;
+    color: #555;
+    background-color: rgba(248, 249, 250, 0.7);
+    border-radius: 4px;
+}
+
+.list-error {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+}
+
+/* --- 活動網格布局 (復用 ShopListPage 的網格) --- */
+.event-list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* 自動適應寬度 */
+    gap: 1.8rem; /* 卡片間距 */
+    margin-top: 1.5rem; /* 與上方控件的距離 */
+}
+
+/* --- 分頁容器 (復用 ShopListPage) --- */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5rem;
+    padding-bottom: 1rem;
+}
+
+/* --- 響應式調整 (復用 ShopListPage) --- */
+@media (max-width: 768px) {
+    /* ... (與 ShopListPage.css 相同或類似的調整) ... */
+    .controls-wrapper { gap: 1rem; }
+    .reset-button { margin-left: 0; width: 100%; margin-top: 1rem; }
+    .event-list-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.2rem; }
+}
+
+@media (max-width: 576px) {
+    /* ... (與 ShopListPage.css 相同或類似的調整) ... */
+    .event-list-page-container { padding: 1rem; }
+    .page-header h1 { font-size: 1.8rem; }
+    .filter-group legend { font-size: 1rem; }
+    .control-item { flex-basis: 100%; justify-content: space-between; }
+    .control-item select, .control-item input[type="date"] { min-width: auto; flex-grow: 1; margin-left: 0.5rem; }
+    .reset-button { font-size: 0.9rem; padding: 0.7rem 1rem; }
+    .event-list-grid { grid-template-columns: 1fr; gap: 1rem; }
+}
+
+/* --- EventListPage 特有樣式 (如果需要) --- */
+.event-list-content {
+    margin-top: 1rem; /* 內容與篩選器的間距 */
+}
+
+/* 確保 EventCard 的樣式也被正確引入或定義 */

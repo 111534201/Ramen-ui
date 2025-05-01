@@ -1,0 +1,51 @@
+/* src/pages/NotFoundPage.css */
+
+.not-found-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 120px); /* 減去 header/footer 高度 */
+    text-align: center;
+    padding: 2rem;
+    background-color: #f8f9fa; /* 淡背景色 */
+  }
+  
+  .not-found-content {
+    max-width: 500px;
+  }
+  
+  .not-found-title {
+    font-size: 4rem; /* 大標題 */
+    font-weight: bold;
+    color: #dc3545; /* 紅色 */
+    margin-bottom: 1rem;
+  }
+  
+  .not-found-message {
+    font-size: 1.2rem;
+    color: #6c757d; /* 灰色文字 */
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+  
+  .not-found-image {
+     max-width: 200px; /* 限制圖片大小 */
+     margin-bottom: 2rem;
+     opacity: 0.8;
+  }
+  
+  
+  .not-found-link {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    background-color: #ff6347; /* 主題色 */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+  }
+  
+  .not-found-link:hover {
+    background-color: #e55337;
+  }

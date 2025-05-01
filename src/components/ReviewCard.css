@@ -1,0 +1,150 @@
+/* src/components/ReviewCard.css */
+
+.review-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 1rem 1.2rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    position: relative; /* 為了絕對定位的按鈕 */
+}
+
+/* 回覆的樣式 */
+.review-card.reply {
+    margin-left: 2.5rem; /* 回覆向右縮進 */
+    background-color: #f9f9f9; /* 回覆背景稍有區別 */
+    border-left: 3px solid #ffae9a; /* 左側用主題色系標示 */
+    margin-top: 0.8rem;
+}
+
+/* 店家回覆的特殊樣式 */
+.review-card.owner-reply {
+    border-left-color: #ff6347; /* 店家回覆使用更深的主題色 */
+    background-color: #fff8f6; /* 非常淺的背景色 */
+}
+
+.review-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.8rem;
+    flex-wrap: wrap; /* 在小屏幕上換行 */
+    gap: 0.5rem; /* 元素間距 */
+}
+
+.review-author {
+    font-weight: 600;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.owner-badge {
+    font-size: 0.75rem;
+    font-weight: normal;
+    background-color: #ff6347;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-left: 0.3rem;
+}
+
+.review-rating .stars {
+    color: #fdd835; /* 黃色星星 */
+    font-size: 1rem; /* 調整星星大小 */
+    letter-spacing: 1px;
+}
+
+.review-time {
+    font-size: 0.8rem;
+    color: #888;
+}
+.updated-time {
+    margin-left: 0.5rem;
+    font-style: italic;
+}
+
+
+.review-content {
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    white-space: pre-wrap; /* 保留換行和空格 */
+    word-break: break-word; /* 長單詞換行 */
+}
+
+/* 評論媒體樣式 */
+.review-media-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px; /* 圖片間距 */
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.review-media-item {
+    width: 80px; /* 圖片大小 */
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    cursor: pointer; /* 提示可點擊放大 */
+    transition: opacity 0.2s ease;
+}
+.review-media-item:hover {
+    opacity: 0.8;
+}
+
+
+/* 操作按鈕區域 */
+.review-card-actions {
+    margin-top: 1rem;
+    padding-top: 0.8rem;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    flex-wrap: wrap; /* 換行 */
+    gap: 0.8rem; /* 按鈕間距 */
+    align-items: center;
+}
+
+.action-button {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.action-button:hover {
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* 特定按鈕顏色 */
+.reply-button:hover { background-color: #e3f2fd; color: #1e88e5; } /* 藍色系 */
+.edit-button:hover { background-color: #fff3e0; color: #ffa000; } /* 橙色系 */
+.delete-button:hover { background-color: #ffebee; color: #e53935; } /* 紅色系 */
+.toggle-replies-button:hover { background-color: #e8eaf6; color: #3949ab; } /* 靛藍色系 */
+
+
+/* 如果需要絕對定位按鈕到右上角 */
+/*
+.review-card-actions {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: white; // 可能需要背景色遮擋下方內容
+}
+.review-card-actions button {
+    margin-left: 0.5rem;
+    padding: 2px 5px; // 調小 padding
+}
+*/

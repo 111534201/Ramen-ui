@@ -1,0 +1,44 @@
+/* src/components/EventForm.css (或添加到其他 CSS 文件) */
+
+/* 基礎表單樣式可以復用 .shop-form 或 .auth-form */
+.event-form {
+    /* 如果需要特定於 EventForm 的樣式，可以在這裡添加 */
+}
+
+/* 日期選擇器樣式 (需要針對 react-datepicker 調整) */
+.date-picker-input {
+    /* 讓它看起來像其他的 input */
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    font-family: inherit;
+    line-height: 1.5; /* 確保文字垂直居中 */
+}
+.react-datepicker-wrapper {
+    width: 100%; /* 讓 datepicker 包裹元素也佔滿寬度 */
+}
+/* 可以進一步自訂 DatePicker 的彈出樣式 */
+/* .react-datepicker { ... } */
+/* .react-datepicker__header { ... } */
+
+/* 媒體管理部分的樣式可以復用 ShopForm.css 中的 */
+/* .existing-media-section { ... } */
+/* .media-grid { ... } */
+/* .media-item-wrapper { ... } */
+/* .media-preview { ... } */
+/* .media-action-button { ... } */
+/* .delete-button { ... } */
+/* .undelete-button { ... } */
+/* .media-item-wrapper.marked-for-delete { ... } */
+/* .upload-section { ... } */
+/* .new-photo-previews { ... } */
+/* .photo-preview-item { ... } */
+
+/* 錯誤訊息、按鈕等也可以復用現有樣式 */
+/* .error-message { ... } */
+/* .form-actions { ... } */
+/* .submit-button { ... } */
+/* .cancel-button { ... } */

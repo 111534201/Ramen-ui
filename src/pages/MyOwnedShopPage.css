@@ -1,0 +1,70 @@
+/* --- 新增：管理員下架按鈕樣式 --- */
+.admin-actions .hide-event-button {
+    background-color: #ffcc80; /* 淺橘色背景 */
+    color: #e65100;    /* 深橘色文字 */
+    border-color: #ffb74d;
+}
+.admin-actions .hide-event-button:hover:not(:disabled) {
+    background-color: #ffa726; /* 滑過時顏色加深 */
+    border-color: #ffa726;
+    color: #fff; /* 滑過時文字變白 */
+}
+
+/* --- 新增：管理員篩選器區域樣式 --- */
+.admin-filters {
+    background-color: #f8f9fa; /* 沿用列表頁篩選器的背景色 */
+    padding: 1rem 1.5rem; /* 內邊距 */
+    border: 1px solid #dee2e6; /* 邊框 */
+    border-radius: 6px;      /* 圓角 */
+    margin-bottom: 1.5rem;   /* 與下方內容的間距 */
+}
+
+/* 復用 ShopListPage 的篩選器內部佈局樣式 (如果尚未全局定義) */
+/* 如果這些 class 已在全局或 ShopListPage.css 中定義且適用，則無需重複添加 */
+.admin-filters .controls-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.admin-filters .control-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.admin-filters .control-item label {
+    font-weight: 500;
+    color: #495057;
+    white-space: nowrap;
+}
+
+.admin-filters .control-item select {
+    padding: 0.6rem 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    background-color: #fff;
+    min-width: 180px; /* 可以根據需要調整寬度 */
+    cursor: pointer;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.admin-filters .control-item select:focus {
+   border-color: #80bdff;
+   outline: 0;
+   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+.admin-filters .control-item select:disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+/* 可以為篩選器標題添加樣式 (如果有的話) */
+.admin-filters legend {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #495057;
+    padding: 0 0.5rem;
+    margin-bottom: 1rem;
+}

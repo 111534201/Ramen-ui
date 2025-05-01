@@ -1,0 +1,176 @@
+/* src/pages/HomePage.css */
+
+.homepage {
+  position: relative; /* 為了讓絕對定位的元素相對此容器 */
+  width: 100%;
+  height: calc(100vh - 60px); /* 示例：佔滿減去 Navbar 的剩餘高度 */
+  overflow: hidden; /* 防止內容溢出 */
+}
+
+/* --- 修改後的 地圖搜索框容器 (定位至左上角) --- */
+.map-search-container {
+  position: absolute;
+
+  /* --- 定位到左上角 --- */
+  top: 70px;        /* 修改: 距離頂部 (假設 Navbar 60px + 間距 10px)，請自行調整 */
+  left: 15px;        /* 修改: 距離左側，請自行調整 */
+  /* right: 15px; */    /* 移除或註解掉 right 屬性 */
+  z-index: 7;        /* 保持: 提高層級，確保高於下方的提示訊息 */
+  width: auto;       /* 保持: 讓寬度由 input 決定 */
+  max-width: none;   /* 保持: 移除最大寬度限制 */
+  transform: none;   /* 確保沒有 transform 影響 */
+  margin: 0;         /* 確保沒有 margin 影響 */
+
+  /* --- 保留原有的外觀樣式 --- */
+  background-color: rgba(255, 255, 255, 0.9); /* 半透明背景 */
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+/* 搜索框 Input 樣式 (保持不變或按需調整) */
+.map-search-input {
+  width: 300px;      /* 保持: 設定固定寬度，請自行調整 */
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  display: block;
+}
+.map-search-input:focus {
+    outline: none;
+    border-color: #ff8a65;
+    box-shadow: 0 0 0 2px rgba(255, 138, 101, 0.2);
+}
+
+/* 加載和錯誤提示覆蓋層 (保持不變) */
+.loading-overlay, .error-overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 4px;
+  z-index: 6; /* 比搜索框低 */
+  font-size: 0.9rem;
+}
+.error-overlay {
+  background-color: rgba(220, 53, 69, 0.8);
+}
+
+
+/* --- InfoWindow 內容樣式 (保持不變) --- */
+.info-window-content {
+  padding: 5px;
+  max-width: 250px;
+}
+.info-window-content h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.info-window-content p {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #555;
+}
+.info-window-rating {
+    font-size: 0.85rem;
+    color: #777;
+}
+.info-window-link {
+  display: inline-block;
+  margin-top: 0.8rem;
+  color: #ff6347;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+.info-window-link:hover {
+  text-decoration: underline;
+}
+
+
+/* --- 地圖加載中的提示 (保持不變) --- */
+.loading-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    font-size: 1.2rem;
+    color: #666;
+    background-color: #f8f8f8;
+}
+.error-message {
+    color: #dc3545;
+    line-height: 1.6;
+}
+
+
+/* --- ✨ NEW: Search Suggestions List Styles ✨ --- */
+
+.search-suggestions-container {
+  position: absolute;      /* 定位相對於 .map-search-container */
+  top: calc(100% + 5px); /* 定位在父容器下方，留 5px 間隙 */
+  left: 0;               /* 與父容器左側對齊 */
+  right: 0;              /* 與父容器右側對齊 (寬度會自動等於父容器寬度) */
+  background-color: #ffffff; /* 白色背景，不透明 */
+  border: 1px solid #ccc;    /* 邊框 */
+  border-radius: 4px;        /* 圓角 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* 陰影 */
+  z-index: 10;               /* 設定較高的層級，確保在最上層 */
+  max-height: 300px;         /* 限制最大高度 */
+  overflow-y: auto;          /* 超出高度時顯示滾動條 */
+  margin-top: 0; /* 確保沒有多餘的 margin */
+}
+
+.search-suggestions-list {
+  list-style: none; /* 移除列表符號 */
+  margin: 0;
+  padding: 0;
+}
+
+.search-suggestions-list li {
+  padding: 10px 15px; /* 上下 10px，左右 15px 的內距 */
+  cursor: pointer;       /* 滑鼠移過時顯示手指指標 */
+  border-bottom: 1px solid #eee; /* 項目之間的分隔線 */
+  white-space: nowrap;    /* 防止文字換行 */
+  overflow: hidden;       /* 隱藏超出部分 */
+  text-overflow: ellipsis; /* 超出部分顯示省略號 */
+}
+
+.search-suggestions-list li:last-child {
+  border-bottom: none; /* 最後一個項目不需要底部分隔線 */
+}
+
+.search-suggestions-list li:hover {
+  background-color: #f0f0f0; /* 滑鼠懸停時的背景色 */
+}
+
+.suggestion-name {
+  font-weight: 500; /* 店名稍微加粗 */
+  color: #333;
+}
+
+.suggestion-address {
+  font-size: 0.85rem; /* 地址文字稍小 */
+  color: #777;
+  margin-left: 8px; /* 與店名間隔 */
+  /* display: block; */ /* 如果想讓地址換行顯示，取消註解此行 */
+  /* margin-top: 2px; */ /* 如果換行顯示，可以加點間距 */
+}
+
+/* 載入中 / 無結果提示的樣式 */
+.search-loading,
+.search-no-results {
+  padding: 15px;
+  text-align: center;
+  color: #888;
+  font-size: 0.9rem;
+}
+/* --- ✨ End NEW Styles ✨ --- */

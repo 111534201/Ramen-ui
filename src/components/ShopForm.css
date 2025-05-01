@@ -1,0 +1,176 @@
+/* src/components/ShopForm.css */
+
+.shop-form fieldset {
+    border: 1px solid #e0e0e0;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 4px;
+}
+
+.shop-form legend {
+    padding: 0 0.8rem;
+    font-weight: 600;
+    color: #ff6347; /* 主題色 */
+    font-size: 1.1rem;
+}
+
+.shop-form .form-group {
+    margin-bottom: 1.2rem;
+    text-align: left;
+}
+
+.shop-form label {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: #555;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.shop-form input[type="text"],
+.shop-form input[type="email"],
+.shop-form input[type="password"],
+.shop-form input[type="tel"], /* 電話 */
+.shop-form input[type="file"],
+.shop-form textarea {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+    font-family: inherit;
+}
+.shop-form input[type="file"] { padding: 0.5rem; cursor: pointer; }
+.shop-form textarea { min-height: 100px; resize: vertical; }
+
+.shop-form input:focus,
+.shop-form textarea:focus {
+    outline: none;
+    border-color: #ff8a65;
+    box-shadow: 0 0 0 2px rgba(255, 138, 101, 0.2);
+}
+
+.shop-form small {
+    display: block;
+    margin-top: 0.3rem;
+    font-size: 0.8rem;
+    color: #777;
+}
+
+/* 現有媒體管理 */
+.existing-media-section {
+    margin-top: 1.5rem;
+}
+.existing-media-section h4 {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #333;
+}
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* 響應式網格 */
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+.media-item-wrapper {
+    position: relative;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.media-preview {
+    display: block;
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.media-action-button {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    color: white;
+    opacity: 0.9;
+    transition: opacity 0.2s ease;
+}
+.media-action-button:hover { opacity: 1; }
+.delete-button { background-color: rgba(220, 53, 69, 0.8); }
+.undelete-button { background-color: rgba(40, 167, 69, 0.8); }
+
+.media-item-wrapper.marked-for-delete .media-preview {
+    opacity: 0.4;
+    filter: grayscale(80%);
+}
+.media-item-wrapper.marked-for-delete .delete-button { display: none; }
+.media-item-wrapper:not(.marked-for-delete) .undelete-button { display: none; }
+
+/* 新文件上傳 */
+.upload-section { margin-top: 2rem; }
+
+/* === 新文件預覽 容器 的樣式 === */
+.new-photo-previews {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    /* border: none; */ /* 保持移除 */
+    border-radius: 4px;
+    min-height: 50px;
+    /* background-color: transparent; */ /* 保持移除 */
+}
+
+/* === 新文件預覽 單個項目 的樣式 (使用 height: auto) === */
+.photo-preview-item {
+    display: block;
+    width: 100%;
+    height: auto;          /* 高度自動 */
+    max-height: 300px;     /* 限制最大高度 (可調整) */
+    object-fit: contain;   /* 內容完整顯示 */
+    background-color: transparent; /* 背景透明 */
+    /* border: none; */       /* 移除邊框 */
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+/* 錯誤訊息 */
+.shop-form .error-message {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 0.8rem 1rem;
+    border: 1px solid #e57373;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+/* 提交按鈕區域 */
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.8rem;
+    margin-top: 2rem;
+}
+.form-actions .submit-button,
+.form-actions .cancel-button {
+    padding: 0.8rem 1.8rem;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+    border: none;
+}
+.form-actions .submit-button { background-color: #ff6347; color: white; }
+.form-actions .submit-button:hover:not(:disabled) { background-color: #e55337; }
+.form-actions .submit-button:disabled { background-color: #ffab91; cursor: not-allowed; opacity: 0.7; }
+.form-actions .cancel-button { background-color: #f0f0f0; color: #555; border: 1px solid #ddd; }
+.form-actions .cancel-button:hover:not(:disabled) { background-color: #e0e0e0; }
+.form-actions .cancel-button:disabled { background-color: #f8f8f8; cursor: not-allowed; opacity: 0.7; }

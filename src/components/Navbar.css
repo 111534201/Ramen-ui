@@ -1,0 +1,145 @@
+/* src/components/Navbar.css */
+
+.navbar {
+    background-color: #333; /* 深灰色背景 */
+    color: #fff;
+    padding: 0.8rem 2rem; /* 上下 0.8rem, 左右 2rem */
+    position: sticky; /* 固定在頂部 */
+    top: 0;
+    z-index: 100; /* 確保在最上層 */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between; /* Logo 和菜單分開 */
+    align-items: center;
+    max-width: 1400px; /* 限制最大寬度 */
+    margin: 0 auto; /* 水平居中 */
+}
+
+.navbar-logo {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.6rem; /* Logo 字體稍大 */
+    font-weight: bold;
+    display: flex; /* 讓 icon 和文字對齊 */
+    align-items: center;
+}
+.navbar-logo:hover {
+    color: #ffc107; /* 滑過變黃色 (示例) */
+}
+
+
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    gap: 1.5rem; /* 菜單項之間的間距 */
+}
+
+.navbar-item {
+    /* 不需要額外樣式，由內部的 link 或 button 控制 */
+}
+
+.navbar-link {
+    color: #eee; /* 淺灰色文字 */
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 0.5rem 0; /* 給一些垂直空間 */
+    position: relative;
+    transition: color 0.2s ease;
+}
+
+/* 添加底線滑過效果 */
+.navbar-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ff6347; /* 主題色 */
+    transition: width 0.3s ease;
+}
+
+.navbar-link:hover,
+.navbar-link.active { /* 可以給當前頁面路由添加 active class */
+    color: #fff; /* 滑過或活動時變白色 */
+}
+ .navbar-link:hover::after,
+ .navbar-link.active::after {
+    width: 100%; /* 底線展開 */
+ }
+
+
+/* 特定連結樣式 */
+.admin-link { color: #90caf9; } /* 管理員連結用淺藍色 (示例) */
+.admin-link:hover { color: #e3f2fd; }
+.owner-link { color: #a5d6a7; } /* 店家連結用淺綠色 (示例) */
+.owner-link:hover { color: #e8f5e9; }
+.signup-link { /* 食客註冊 */
+   /* 可以加點特殊樣式 */
+}
+.owner-signup-link { /* 店家註冊 */
+   /* 可以加點特殊樣式 */
+   color: #ffe082;
+}
+ .owner-signup-link:hover {
+    color: #fff59d;
+ }
+
+
+/* 用戶問候語 */
+.navbar-user-greeting {
+    color: #ccc;
+    font-size: 0.9rem;
+    margin-right: 0.5rem; /* 和登出按鈕的間距 */
+}
+
+/* 按鈕樣式 */
+.navbar-button {
+    background-color: transparent;
+    color: #eee;
+    border: 1px solid #eee;
+    padding: 0.4rem 0.9rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+ .navbar-button:hover {
+    background-color: #eee;
+    color: #333;
+ }
+
+ .logout-button {
+     border-color: #ff8a80; /* 紅色邊框 */
+     color: #ff8a80;
+ }
+  .logout-button:hover {
+    background-color: #ff8a80;
+    color: #fff;
+ }
+
+/* 響應式：小屏幕時可以考慮變成漢堡菜單 */
+@media (max-width: 992px) {
+    .navbar-menu {
+        /* 在這裡實現漢堡菜單的邏輯 */
+        /* 例如：隱藏 ul，顯示一個菜單按鈕 */
+        /* display: none; */
+        gap: 1rem; /* 縮小間距 */
+    }
+     .navbar-logo { font-size: 1.4rem;}
+     .navbar-link { font-size: 0.95rem;}
+     .navbar-button { font-size: 0.85rem; padding: 0.3rem 0.7rem;}
+}
+@media (max-width: 768px) {
+     .navbar { padding: 0.6rem 1rem; }
+     /* 可以在更小的屏幕上完全隱藏文字，只留圖標或漢堡菜單 */
+      .navbar-user-greeting { display: none; } /* 隱藏問候語 */
+      /* 菜單項可能需要垂直排列 */
+}

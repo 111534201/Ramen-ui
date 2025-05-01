@@ -1,0 +1,163 @@
+/* src/components/AddReviewForm.css */
+
+.add-review-form-container {
+    background-color: #fdfdfd; /* 比頁面稍亮的背景 */
+    border: 1px solid #e8e8e8;
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin-top: 1rem; /* 與上方評論卡的間距 */
+    margin-bottom: 2rem; /* 與下方內容的間距 */
+}
+
+/* 回覆模式下的特定樣式 (可以與 ReviewCard.reply 結合) */
+.add-review-form-container.reply-mode {
+    margin-left: 2.5rem; /* 同樣縮進 */
+    background-color: #f9f9f9;
+    border-color: #e0e0e0;
+}
+
+/* 編輯模式下的特定樣式 */
+.add-review-form-container.edit-mode {
+    border-left: 3px solid #ffae9a; /* 標示編輯狀態 */
+}
+
+
+.add-review-form h4 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #444;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.8rem;
+}
+
+.add-review-form .form-group {
+    margin-bottom: 1.2rem;
+}
+
+.add-review-form label {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: #555;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.add-review-form input[type="text"],
+.add-review-form input[type="file"],
+.add-review-form textarea {
+    width: 100%;
+    padding: 0.7rem 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+    font-family: inherit; /* 繼承父級字體 */
+}
+ .add-review-form input[type="file"] {
+     padding: 0.5rem; /* 文件輸入框樣式可能不同 */
+     cursor: pointer;
+ }
+
+
+.add-review-form input:focus,
+.add-review-form textarea:focus {
+    outline: none;
+    border-color: #ff8a65; /* 淺橙色焦點 */
+    box-shadow: 0 0 0 2px rgba(255, 138, 101, 0.2);
+}
+
+.add-review-form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* 評分星星樣式 */
+.rating-input {
+    margin-bottom: 1.2rem;
+}
+.rating-input label {
+    margin-bottom: 0.6rem;
+}
+.rating-input .star {
+    font-size: 1.8rem; /* 星星大小 */
+    color: #e0e0e0; /* 未選中顏色 */
+    cursor: pointer;
+    margin-right: 5px;
+    transition: color 0.2s ease;
+}
+.rating-input .star.selectable-star:hover,
+.rating-input .star.selected {
+    color: #fdd835; /* 選中/滑過顏色 */
+}
+.rating-value {
+    margin-left: 1rem;
+    font-size: 0.9rem;
+    color: #777;
+    font-weight: 500;
+}
+
+
+/* 照片預覽 */
+.review-photo-previews {
+    border-color: #ddd; /* 虛線框顏色 */
+}
+
+.add-review-form .error-message {
+    /* 復用 AuthForm 或自定義 */
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 0.8rem 1rem;
+    border: 1px solid #e57373;
+    border-radius: 4px;
+    margin-bottom: 1.2rem;
+    font-size: 0.9rem;
+}
+
+/* 按鈕區域 */
+.form-actions {
+    display: flex;
+    justify-content: flex-end; /* 按鈕靠右 */
+    gap: 0.8rem; /* 按鈕間距 */
+    margin-top: 1.5rem;
+}
+
+.form-actions .submit-button,
+.form-actions .cancel-button {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+    border: none;
+}
+
+.form-actions .submit-button {
+    background-color: #ff6347;
+    color: white;
+}
+.form-actions .submit-button:hover:not(:disabled) {
+    background-color: #e55337;
+}
+.form-actions .submit-button:disabled {
+    background-color: #ffab91;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.form-actions .cancel-button {
+    background-color: #f0f0f0;
+    color: #555;
+    border: 1px solid #ddd;
+}
+.form-actions .cancel-button:hover:not(:disabled) {
+    background-color: #e0e0e0;
+}
+ .form-actions .cancel-button:disabled {
+    background-color: #f8f8f8;
+    cursor: not-allowed;
+    opacity: 0.7;
+ }

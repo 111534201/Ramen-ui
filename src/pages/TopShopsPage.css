@@ -1,0 +1,36 @@
+/* src/pages/TopShopsPage.css */
+
+.top-shops-page-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.5rem;
+  }
+  
+  /* 可以復用 ShopListPage 的 .page-header, .filter-sort-controls 等樣式 */
+  
+  /* 排行榜項目容器 */
+  .ranked-shop-item {
+      position: relative; /* 為了絕對定位排名標籤 */
+      height: 100%; /* 確保 ShopCard 能填滿 */
+  }
+  
+  /* 排名標籤樣式 */
+  .rank-badge {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      background-color: #ff6347; /* 主題色 */
+      color: white;
+      font-size: 0.9rem;
+      font-weight: bold;
+      padding: 6px 10px;
+      border-radius: 50%; /* 圓形 */
+      z-index: 2; /* 在卡片之上 */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      border: 2px solid white; /* 白色邊框增加對比 */
+      line-height: 1; /* 確保文字垂直居中 */
+  }
+  
+  /* 網格佈局繼承自 ShopListPage.css */
+  /* .shop-list-grid { ... } */
+  /* .shop-card { ... } */

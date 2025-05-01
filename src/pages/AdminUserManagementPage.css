@@ -1,0 +1,168 @@
+/* src/pages/AdminUserManagementPage.css */
+
+/* 頁面容器基礎樣式 (可以放在 App.css 或 index.css) */
+.page-container {
+    max-width: 1200px; /* 或者你設定的其他最大寬度 */
+    margin: 2rem auto;
+    padding: 1.5rem;
+    /* background-color: #fff; */ /* 可選：給頁面容器一個背景色 */
+    /* border-radius: 8px; */ /* 可選：圓角 */
+    /* box-shadow: 0 1px 4px rgba(0,0,0,0.05); */ /* 可選：輕微陰影 */
+}
+
+.admin-user-management-page h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+    font-size: 2rem; /* 調整標題大小 */
+    font-weight: 600;
+    border-bottom: 1px solid #eee; /* 可選：添加分隔線 */
+    padding-bottom: 1rem;
+}
+
+/* 加載提示樣式 */
+.admin-user-management-page .loading {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* 錯誤消息樣式 (可以復用 AuthForm.css 或全局樣式) */
+.admin-user-management-page .error-message {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 0.8rem 1rem;
+    border: 1px solid #e57373;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+/* 用戶表格容器 */
+.user-table-container {
+    overflow-x: auto; /* 在小屏幕上啟用水平滾動 */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border: 1px solid #eee; /* 添加細邊框 */
+}
+
+/* 用戶表格 */
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 900px; /* 最小寬度，防止內容過窄 */
+}
+
+.user-table th,
+.user-table td {
+    padding: 1rem; /* 增加內邊距 */
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0; /* 更淺的分隔線 */
+    vertical-align: middle;
+    white-space: nowrap; /* 防止自動換行 */
+    font-size: 0.9rem; /* 統一字體大小 */
+}
+/* 給Email和時間列更多空間 */
+.user-table th:nth-child(3), .user-table td:nth-child(3), /* Email */
+.user-table th:nth-child(6), .user-table td:nth-child(6), /* 註冊時間 */
+.user-table th:nth-child(7), .user-table td:nth-child(7) { /* 最後更新 */
+    white-space: normal; /* 允許換行 */
+    word-break: break-all; /* 長 Email 換行 */
+}
+
+
+/* 表頭樣式 */
+.user-table thead th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    color: #495057;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: sticky; /* 可選：固定表頭 */
+    top: 0; /* 配合 sticky */
+    z-index: 1;
+}
+
+/* 表格行樣式 */
+.user-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.user-table tbody tr:hover {
+    background-color: #fafafa; /* 滑過效果 */
+}
+
+/* 正在操作的行動畫 */
+.user-table tbody tr.operating {
+    opacity: 0.6;
+    pointer-events: none; /* 防止重複點擊 */
+    background-color: #f0f0f0; /* 標示正在操作 */
+}
+
+/* 狀態標籤 */
+.status-badge {
+    padding: 4px 10px; /* 微調 padding */
+    border-radius: 12px; /* 更圓的膠囊 */
+    font-size: 0.75rem; /* 稍小字體 */
+    font-weight: 600;
+    display: inline-block;
+    text-transform: uppercase; /* 可選：大寫 */
+    letter-spacing: 0.5px;
+}
+.status-badge.enabled {
+    background-color: rgba(40, 167, 69, 0.1); /* 淺綠背景 */
+    color: #28a745; /* 綠色文字 */
+    border: 1px solid rgba(40, 167, 69, 0.2);
+}
+.status-badge.disabled {
+    background-color: rgba(220, 53, 69, 0.1); /* 淺紅背景 */
+    color: #dc3545; /* 紅色文字 */
+    border: 1px solid rgba(220, 53, 69, 0.2);
+}
+
+/* 操作按鈕容器 */
+.action-buttons {
+    display: flex;
+    gap: 0.6rem; /* 按鈕間距 */
+}
+
+/* 操作按鈕基礎樣式 */
+.action-button {
+    padding: 6px 12px; /* 微調 padding */
+    font-size: 0.8rem; /* 稍小字體 */
+    border-radius: 4px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    font-weight: 500;
+}
+.action-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* 不同按鈕的顏色 */
+.role-button { background-color: #e3f2fd; border-color: #bbdefb; color: #1565c0; }
+.role-button:hover:not(:disabled) { background-color: #bbdefb; }
+
+.enable-button.enable { background-color: #e8f5e9; border-color: #c8e6c9; color: #2e7d32; }
+.enable-button.enable:hover:not(:disabled) { background-color: #c8e6c9; }
+
+.enable-button.disable { background-color: #ffebee; border-color: #ffcdd2; color: #c62828; }
+.enable-button.disable:hover:not(:disabled) { background-color: #ffcdd2; }
+
+.delete-button { background-color: #fce4ec; border-color: #f8bbd0; color: #ad1457; } /* 深粉紅色系 */
+.delete-button:hover:not(:disabled) { background-color: #f8bbd0; }
+
+
+/* 響應式 */
+@media (max-width: 768px) {
+    .admin-user-management-page { padding: 1rem; }
+    .admin-user-management-page h1 { font-size: 1.8rem; }
+    .user-table th, .user-table td { padding: 0.7rem 0.8rem; font-size: 0.85rem; }
+    .action-buttons { flex-direction: column; align-items: flex-start; gap: 0.4rem; } /* 垂直排列按鈕 */
+    .action-button { width: 100%; text-align: center; } /* 按鈕寬度 */
+}

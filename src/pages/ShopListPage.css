@@ -1,0 +1,194 @@
+/* src/pages/ShopListPage.css */
+
+.shop-list-page-container {
+    max-width: 1400px; /* 可以稍微寬一點以容納更多卡片 */
+    margin: 0 auto; /* 水平居中 */
+    padding: 1.5rem;
+    font-family: sans-serif;
+  }
+  
+  .page-header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1.5rem;
+  }
+  
+  .page-header h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  
+  /* --- 篩選和排序控制項樣式 --- */
+  .filter-sort-controls {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 0; /* 由 fieldset 控制內邊距 */
+  }
+  
+  .filter-group {
+      border: none; /* 移除 fieldset 的默認邊框 */
+      padding: 1rem 1.5rem;
+      margin: 0;
+  }
+  
+  .filter-group legend {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #495057;
+      padding: 0 0.5rem; /* 左右留白 */
+      margin-bottom: 1rem;
+  }
+  
+  .controls-wrapper {
+      display: flex;
+      flex-wrap: wrap; /* 允許換行 */
+      gap: 1.5rem; /* 控制項之間的間距加大 */
+      align-items: center;
+  }
+  
+  .control-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .control-item label {
+    font-weight: 500;
+    color: #495057;
+    white-space: nowrap;
+  }
+  
+  .control-item select {
+    padding: 0.6rem 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    background-color: #fff;
+    min-width: 160px; /* 下拉選單最小寬度 */
+    cursor: pointer;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  .control-item select:focus {
+     border-color: #80bdff;
+     outline: 0;
+     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+  .control-item select:disabled {
+      background-color: #e9ecef;
+      cursor: not-allowed;
+  }
+  
+  
+  .reset-button {
+      padding: 0.6rem 1.2rem;
+      background-color: #6c757d;
+      color: white;
+      border: 1px solid #6c757d;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease, border-color 0.2s ease;
+      margin-left: auto; /* 嘗試將重設按鈕推到右邊 */
+  }
+  .reset-button:hover:not(:disabled) {
+      background-color: #5a6268;
+      border-color: #545b62;
+  }
+  .reset-button:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+  }
+  
+  /* --- 加載/錯誤/無結果提示 --- */
+  .list-loading,
+  .list-error,
+  .list-no-results {
+    text-align: center;
+    padding: 3rem 1rem;
+    font-size: 1.1rem;
+    color: #6c757d;
+  }
+  
+  .list-loading-update {
+      font-style: italic;
+      text-align: center;
+      padding: 0.5rem;
+      margin: 1rem 0; /* 上下邊距 */
+      color: #555;
+      background-color: rgba(248, 249, 250, 0.7);
+      border-radius: 4px;
+  }
+  
+  .list-error {
+    color: #dc3545;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+  }
+  
+  /* --- 店家網格布局 --- */
+  .shop-list-grid {
+    display: grid;
+    /* 自動填充列，每列最小 280px，最大 1fr (均分剩餘空間) */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.8rem; /* 卡片間距 */
+    margin-top: 1rem; /* 列表與上方控件的間距 */
+  }
+  
+  /* --- 分頁元件容器 (需要 Pagination.css 來定義內部樣式) --- */
+  .pagination-container { /* 假設 Pagination 組件會放在這個容器裡 */
+      display: flex;
+      justify-content: center;
+      margin-top: 2.5rem; /* 與列表的間距 */
+      padding-bottom: 1rem; /* 底部留白 */
+  }
+  
+  
+  /* 響應式調整 */
+  @media (max-width: 768px) {
+    .controls-wrapper {
+        gap: 1rem; /* 縮小間距 */
+    }
+     .reset-button {
+        margin-left: 0; /* 在小屏幕上不再推到右邊 */
+        width: 100%; /* 可以讓按鈕佔滿一行 */
+        margin-top: 1rem;
+     }
+      .shop-list-grid {
+          grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+          gap: 1.2rem;
+      }
+  }
+  
+  @media (max-width: 576px) {
+     .shop-list-page-container {
+        padding: 1rem;
+     }
+     .page-header h1 {
+         font-size: 1.8rem;
+     }
+     .filter-group legend {
+         font-size: 1rem;
+     }
+     .control-item {
+         flex-basis: 100%; /* 讓每個控制項佔一行 */
+         justify-content: space-between; /* 標籤和下拉框分開 */
+     }
+     .control-item select {
+         min-width: auto; /* 移除最小寬度 */
+         flex-grow: 1; /* 讓下拉框填滿剩餘空間 */
+         margin-left: 0.5rem;
+     }
+     .reset-button {
+        font-size: 0.9rem;
+        padding: 0.7rem 1rem;
+     }
+     .shop-list-grid {
+        grid-template-columns: 1fr; /* 單列顯示 */
+        gap: 1rem;
+     }
+  }

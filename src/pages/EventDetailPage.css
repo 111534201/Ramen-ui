@@ -1,0 +1,136 @@
+/* src/pages/EventDetailPage.css */
+
+/* --- 基礎容器：復用 .shop-detail-page --- */
+.event-detail-page {
+    /* (與 .shop-detail-page 相同) */
+    /* max-width: 1100px; margin: 2rem auto; padding: 1.5rem; */
+}
+
+/* --- 頁眉調整 (復用 .shop-header) --- */
+.event-header {
+    /* 可以添加特定於活動頁眉的樣式 */
+    align-items: flex-start; /* 標題和按鈕垂直對齊方式 */
+}
+.event-header h1 {
+    /* (與 .shop-header h1 相同) */
+    /* font-size: 2.2rem; font-weight: 700; ... */
+    margin-bottom: 0.5rem; /* 給標題下方留些空間 */
+}
+/* 返回按鈕樣式 */
+.back-link {
+    color: #555;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+    margin-left: auto; /* 將返回按鈕推到右邊 */
+    align-self: center; /* 垂直居中 */
+}
+.back-link:hover {
+    color: #ff6347;
+}
+
+
+/* --- 活動元信息欄 --- */
+.event-meta-info {
+    display: flex;
+    flex-wrap: wrap; /* 換行 */
+    align-items: center; /* 垂直居中 */
+    gap: 0.5rem 1rem; /* 行間距 0.5rem, 列間距 1rem */
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f0f0f0; /* 底部分隔線 */
+}
+.event-meta-info > span { /* 直接子元素 span */
+    display: inline-flex; /* 使用 inline-flex 讓內部圖標和文字對齊 */
+    align-items: center;
+    gap: 0.3rem; /* 圖標和文字間距 */
+    font-size: 0.9rem;
+    color: #555;
+}
+/* 復用 EventCard 的標籤樣式 */
+.event-meta-info .event-type-badge { margin-bottom: 0; }
+.event-meta-info .status-chip { position: static; top: auto; right: auto; z-index: auto; }
+.event-meta-info .event-shop-info a { color: inherit; text-decoration: none; font-weight: 500; }
+.event-meta-info .event-shop-info a:hover { color: #ff6347; text-decoration: underline;}
+
+
+/* --- 媒體輪播圖容器 (復用 .shop-media-slider) --- */
+.event-media-slider {
+    margin-bottom: 2rem;
+    background-color: #f0f0f0; /* 加載時的背景 */
+    border-radius: 8px;
+    overflow: hidden; /* 確保圓角生效 */
+}
+/* 輪播圖樣式 (需要引入 react-slick CSS) */
+.event-media-slider .slick-slide img,
+.event-media-slider .slick-slide video {
+    display: block;
+    width: 100%;
+    max-height: 500px; /* 限制最大高度 */
+    object-fit: contain; /* 完整顯示圖片/影片 */
+    margin: 0 auto; /* 水平居中 */
+}
+/* 輪播點樣式 (復用 ShopDetailPage) */
+/* .slick-dots { ... } */
+/* .slick-dots li button:before { ... } */
+/* .slick-prev, .slick-next { ... } */ /* 如果需要自訂箭頭 */
+
+/* --- 無媒體佔位符 --- */
+.no-media-placeholder {
+    background-color: #f8f9fa;
+    border: 1px dashed #dee2e6;
+    border-radius: 8px;
+    padding: 3rem 1rem;
+    text-align: center;
+    color: #6c757d;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+
+/* --- 活動內容區 (復用 .shop-description) --- */
+.event-content-section {
+    background-color: #fdfdfd;
+    padding: 1.5rem;
+    border: 1px solid #f0f0f0;
+    border-radius: 6px;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+}
+.event-content-section h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #444;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0.8rem;
+}
+.event-content-text { /* 如果使用 <pre> 顯示純文本 */
+    white-space: pre-wrap; /* 自動換行 */
+    word-wrap: break-word; /* 處理長單詞 */
+    font-family: inherit; /* 繼承頁面字體 */
+    font-size: 1rem;
+    color: #333;
+}
+
+/* --- 管理員備註區 --- */
+.admin-notes-section {
+    background-color: #fff9c4; /* 淡黃色背景 */
+    border: 1px solid #fff59d;
+    border-radius: 4px;
+    padding: 1rem 1.5rem;
+    margin-top: 1.5rem;
+}
+.admin-notes-section h3 {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    font-size: 1.1rem;
+    color: #f57f17; /* 深黃色文字 */
+}
+.admin-notes-text {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: #5f4300; /* 棕色文字 */
+}

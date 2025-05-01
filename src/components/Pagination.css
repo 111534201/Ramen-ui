@@ -1,0 +1,92 @@
+/* src/components/Pagination.css */
+
+.pagination-container {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    margin-top: 2rem; /* 與上方內容的間距 */
+    margin-bottom: 1rem;
+}
+
+.pagination {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem; /* 輕微圓角 */
+}
+
+.page-item {
+    margin: 0 2px; /* 項目之間的微小間距 */
+}
+
+.page-item .page-link {
+    position: relative;
+    display: block;
+    padding: 0.6rem 0.9rem; /* 內邊距 */
+    margin-left: -1px; /* 輕微重疊邊框 */
+    line-height: 1.25;
+    color: #ff6347; /* 主題色 */
+    background-color: #fff;
+    border: 1px solid #dee2e6; /* 灰色邊框 */
+    cursor: pointer;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    font-size: 0.95rem;
+}
+
+/* 第一個和最後一個按鈕的圓角 */
+.page-item:first-child .page-link {
+    margin-left: 0;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
+.page-item:last-child .page-link {
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+}
+
+
+.page-item .page-link:hover {
+    z-index: 2;
+    color: #e55337; /* 滑過顏色加深 */
+    background-color: #e9ecef; /* 淺灰色背景 */
+    border-color: #dee2e6;
+}
+
+.page-item .page-link:focus {
+    z-index: 3;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(255, 99, 71, 0.25); /* 焦點光暈 */
+}
+
+/* 當前活動頁面的樣式 */
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #ff6347; /* 主題色背景 */
+    border-color: #ff6347;
+}
+
+/* 禁用狀態的樣式 */
+.page-item.disabled .page-link {
+    color: #6c757d; /* 灰色文字 */
+    pointer-events: none; /* 禁用鼠標事件 */
+    cursor: not-allowed; /* 顯示禁用鼠標樣式 */
+    background-color: #fff;
+    border-color: #dee2e6;
+    opacity: 0.65; /* 半透明 */
+}
+
+/* 省略號樣式 */
+.page-link.ellipsis {
+    color: #6c757d;
+    background-color: transparent;
+    border: none;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+/* 上一頁/下一頁按鈕樣式 */
+.page-link.prev-next {
+    /* 可以添加特定圖標或調整樣式 */
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+}

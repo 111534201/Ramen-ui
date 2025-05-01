@@ -1,0 +1,136 @@
+/* src/pages/ManageEventsPage.css */
+
+/* --- 頁面容器 (可復用 .page-container) --- */
+.manage-events-page {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+}
+.manage-events-page h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+    font-size: 1.8rem;
+    font-weight: 600;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 1rem;
+}
+
+/* 頁面級錯誤提示 (可復用) */
+.page-error {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 0.8rem 1rem;
+    border: 1px solid #e57373;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+
+/* --- 頁面操作按鈕 (例如新增按鈕) --- */
+.page-actions {
+    margin-bottom: 1.5rem;
+    text-align: right; /* 按鈕靠右 */
+}
+.add-button { /* 可復用 AuthForm 的 .submit-button 樣式 */
+    padding: 0.7rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #4CAF50; /* 綠色 */
+    color: white;
+    border: none;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+.add-button:hover:not(:disabled) {
+    background-color: #45a049;
+}
+.add-button:disabled {
+     background-color: #a5d6a7;
+     cursor: not-allowed;
+}
+
+/* --- 管理員篩選器區域 (樣式待定義) --- */
+.admin-filters {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    /* 內部佈局待定 */
+}
+
+/* --- 加載/無結果樣式 (復用 .list-loading, .list-no-results) --- */
+.list-loading, .list-no-results {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #6c757d;
+}
+
+/* --- 管理列表網格 (可復用 .shop-list-grid) --- */
+.manage-event-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* 卡片寬度可調整 */
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+/* --- 單個管理項 (包含卡片和可能的額外操作) --- */
+.manage-event-item {
+    display: flex;
+    flex-direction: column; /* 卡片在上，按鈕在下 */
+    height: 100%; /* 填滿網格 */
+}
+.manage-event-item .event-card { /* 確保 EventCard 佔滿寬度 */
+    width: 100%;
+    flex-grow: 1; /* 讓卡片佔據主要空間 */
+}
+
+/* --- 管理員審核按鈕區域 --- */
+.admin-actions {
+    background-color: #f0f0f0;
+    padding: 0.6rem 1rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.8rem;
+    border-top: 1px solid #ddd;
+    /* 與 EventCard 底部對齊，可能需要調整 EventCard 樣式 */
+    border-bottom-left-radius: 6px; /* 匹配卡片圓角 */
+    border-bottom-right-radius: 6px;
+}
+.admin-actions button {
+    padding: 5px 12px;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+.admin-actions button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.approve-button { background-color: #4CAF50; color: white; border-color: #4CAF50; }
+.approve-button:hover:not(:disabled) { background-color: #45a049; border-color: #45a049;}
+
+.reject-button { background-color: #f44336; color: white; border-color: #f44336; }
+.reject-button:hover:not(:disabled) { background-color: #d32f2f; border-color: #d32f2f; }
+
+
+/* --- 表單區域 --- */
+.form-section {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* --- 分頁容器 (復用) --- */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    padding-bottom: 1rem;
+}

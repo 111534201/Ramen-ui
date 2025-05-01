@@ -1,0 +1,377 @@
+/* src/pages/ShopDetailPage.css */
+
+.shop-detail-page {
+    max-width: 1100px; /* 頁面最大寬度 */
+    margin: 2rem auto; /* 上下邊距，左右自動居中 */
+    padding: 1.5rem;
+    font-family: sans-serif; /* 使用通用無襯線字體 */
+}
+
+/* --- 店家標頭區域 --- */
+.shop-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee; /* 底部分隔線 */
+    display: flex; /* 使用 Flexbox 佈局 */
+    flex-wrap: wrap; /* 允許換行 */
+    align-items: baseline; /* 基準線對齊 */
+    gap: 0.5rem 1.5rem; /* 行間距 0.5rem, 列間距 1.5rem */
+}
+
+.shop-header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0; /* 移除默認邊距 */
+    flex-grow: 1; /* 讓標題佔據主要空間 */
+    line-height: 1.3;
+}
+
+/* 編輯按鈕樣式 */
+.edit-shop-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    background-color: #f0f0f0;
+    color: #555;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    text-decoration: none; /* 如果是 Link */
+    white-space: nowrap; /* 防止按鈕文字換行 */
+}
+.edit-shop-button:hover {
+    background-color: #e0e0e0;
+    color: #333;
+}
+
+/* 評分摘要 */
+.shop-rating-summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* 元素間距 */
+    font-size: 1rem;
+    white-space: nowrap;
+    margin-left: auto; /* 嘗試推到右側 (如果空間允許) */
+}
+.shop-rating-summary .stars {
+    color: #f5c518; /* 黃色星星 */
+    font-size: 1.1rem;
+}
+/* --- MODIFIED RULE --- */
+.shop-rating-summary .rating-value,
+.shop-rating-summary .rating-count {
+  color: #555;
+  font-weight: 500;
+}
+/* --- END MODIFIED RULE --- */
+.shop-rating-summary span:last-child { /* This might still override .rating-count color, might need adjustment */
+    font-size: 0.9rem;
+    color: #888; /* Adjust if needed */
+}
+
+
+/* --- 主要內容網格布局 --- */
+.shop-content-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 響應式網格 */
+    gap: 2rem; /* 網格間距 */
+    /* 移除 margin-bottom，讓下方的 section 控制間距 */
+}
+
+/* 左側信息區域 */
+.shop-info {
+    /* 不需要特殊樣式，內容會自動排列 */
+}
+
+.shop-media-carousel-container {
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    overflow: hidden; /* 確保輪播內容不溢出 */
+    background-color: #f0f0f0; /* 加載時的背景色 */
+    min-height: 200px; /* 避免加載時高度塌陷 */
+}
+.shop-media-carousel-container.placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px; /* 佔位符高度 */
+    color: #aaa;
+    font-style: italic;
+}
+
+.carousel-item {
+    /* react-slick 會處理基本佈局 */
+    outline: none; /* 移除焦點輪廓 */
+}
+.shop-media-item img, /* 選擇器更具體 */
+.shop-media-item video {
+    width: 100%;
+    /* max-height: 450px; */ /* 讓輪播圖自適應高度 adaptiveHeight: true */
+    height: auto; /* 允許高度自適應 */
+    object-fit: contain; /* 改為 contain，避免重要信息被裁剪 */
+    display: block; /* 移除底部空隙 */
+    margin: 0 auto; /* 水平居中 */
+    background-color: #eee; /* 圖片未加載時的背景 */
+}
+.shop-media-item.video-item video {
+    background-color: #000;
+    max-height: 450px; /* 限制影片最大高度 */
+}
+
+.carousel-unknown {
+     height: 400px; /* 保持與地圖接近的高度 */
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     color: #999;
+     font-style: italic;
+     background-color: #f0f0f0;
+}
+
+
+/* 店家文字信息 */
+.shop-info p, .shop-info .shop-info-block {
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+    color: #444;
+}
+.shop-info strong {
+    color: #333;
+    margin-right: 0.5em;
+}
+.shop-info pre {
+    white-space: pre-wrap; /* 保留換行和空格 */
+    word-wrap: break-word; /* 長單詞換行 */
+    font-family: inherit; /* 使用頁面字體 */
+    background-color: #f9f9f9;
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+    border: 1px solid #eee;
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 0.3rem; /* 與 label 或 strong 稍微分開 */
+}
+.shop-info a {
+    color: #ff6347;
+    text-decoration: none;
+}
+.shop-info a:hover {
+    text-decoration: underline;
+}
+
+/* 右側地圖區域 */
+.shop-map {
+    position: sticky; /* 讓地圖在滾動時固定 (可選) */
+    top: 80px; /* 固定在 Navbar 下方 (需考慮 Navbar 高度) */
+    height: 400px; /* 固定地圖高度 */
+    /* 如果不希望固定，移除 position 和 top */
+}
+.map-placeholder {
+    width: 100%;
+    height: 100%; /* 佔滿 shop-map 的高度 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    color: #aaa;
+    font-style: italic;
+    border-radius: 8px;
+    text-align: center;
+}
+.map-placeholder.error-message {
+    background-color: #fdd;
+    color: #d32f2f;
+    border: 1px solid #fbb;
+    font-style: normal;
+}
+
+/* --- ✨ 通用區塊容器 (用於活動、評論等) ✨ --- */
+.section-container {
+    margin-top: 3rem; /* 區塊之間的上邊距 */
+    padding-top: 2rem; /* 區塊內的上邊距 */
+    border-top: 1px solid #eee; /* 區塊頂部分隔線 */
+}
+
+.section-container h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-top: 0; /* 移除 h2 默認的上邊距 */
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+/* --- ✨ --- */
+
+/* --- ✨ 店家活動區塊樣式 ✨ --- */
+.shop-events-section {
+    /* 繼承 .section-container 的樣式 */
+}
+.shop-events-section h2 {
+     /* 繼承 .section-container h2 的樣式 */
+     /* 如果需要，可以添加特定樣式 */
+}
+/* 活動列表網格 (已在 EventListPage.css 或 ShopListPage.css 中定義 .event-list-grid/.shop-list-grid) */
+/* 如果沒有全局定義，需要複製過來 */
+.event-list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* 在詳情頁卡片可以稍小 */
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+/* 活動區塊的加載/錯誤/無結果提示 (可以復用評論區樣式) */
+.shop-events-section .loading,
+.shop-events-section .error,
+.shop-events-section .no-results {
+    padding: 2rem 1rem;
+    text-align: center;
+    font-size: 1rem;
+    color: #777;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+.shop-events-section .error {
+    color: #c62828;
+    background-color: #ffebee;
+}
+/* --- ✨ --- */
+
+
+/* --- 評論區 (使用 .section-container) --- */
+.review-section {
+    /* 繼承 .section-container 的樣式 */
+}
+.review-section h2 {
+    /* 繼承 .section-container h2 的樣式 */
+}
+
+/* 評論控制項 (排序) */
+.review-controls {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: flex-end; /* 靠右對齊 */
+}
+.review-sort-controls label {
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+    color: #555;
+    font-weight: 500;
+}
+.review-sort-controls select {
+    padding: 0.4rem 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+.review-sort-controls select:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* 評論列表容器 */
+.review-list {
+    margin-top: 1rem;
+}
+
+/* 單個評論項容器 (包含評論卡片和回覆列表) */
+.review-item-container {
+    margin-bottom: 1.5rem;
+}
+
+/* 回覆列表容器 */
+.replies-list-container {
+    margin-top: 1rem;
+    padding-left: 2.5rem; /* 回覆的整體縮進 */
+    border-left: 2px solid #f0f0f0; /* 左側指示線 */
+}
+.no-replies {
+    font-size: 0.9rem;
+    color: #888;
+    padding: 0.5rem 0;
+}
+
+
+/* 登入發表評論提示 */
+.login-prompt, .info-prompt { /* 包含店家提示 */
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: #fffde7; /* 淡黃色提示背景 */
+    border: 1px solid #fff9c4;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.95rem;
+}
+.login-prompt a {
+    color: #ff6347;
+    font-weight: 600;
+    text-decoration: none;
+}
+.login-prompt a:hover {
+    text-decoration: underline;
+}
+.info-prompt { /* 店家提示樣式 */
+     background-color: #e3f2fd;
+     border-color: #bbdefb;
+}
+
+/* 評論區加載/錯誤/無結果提示 */
+.review-section .loading,
+.review-section .error,
+.review-section .no-results {
+     padding: 2rem 1rem;
+     text-align: center;
+     font-size: 1rem;
+     color: #777;
+     background-color: #f9f9f9;
+     border-radius: 4px;
+     margin-top: 1rem;
+}
+ .review-section .error {
+     color: #c62828;
+     background-color: #ffebee;
+ }
+
+ /* 評論分頁 */
+ .pagination-container { /* 可復用 EventListPage 的樣式 */
+      display: flex;
+      justify-content: center;
+      margin-top: 2.5rem;
+      padding-bottom: 1rem;
+  }
+
+/* --- 響應式設計 --- */
+@media (max-width: 768px) {
+    .shop-content-grid {
+        grid-template-columns: 1fr; /* 在小屏幕上改為單列 */
+    }
+    .shop-map {
+        position: static; /* 取消固定定位 */
+        height: 300px; /* 調整地圖高度 */
+        margin-top: 1.5rem; /* 與上方信息間隔 */
+    }
+    .shop-header {
+        gap: 0.5rem 1rem;
+    }
+    .shop-header h1 {
+        font-size: 1.8rem;
+    }
+    .edit-shop-button {
+        width: 100%; /* 編輯按鈕佔滿一行 */
+        text-align: center;
+        margin-top: 0.5rem;
+    }
+     .event-list-grid {
+         grid-template-columns: 1fr; /* 活動列表在小屏幕也改為單列 */
+     }
+     .replies-list-container {
+          padding-left: 1.5rem; /* 縮小回覆縮進 */
+     }
+}
+
+@media (max-width: 576px) {
+     .shop-detail-page { padding: 1rem; }
+     .shop-header h1 { font-size: 1.6rem; }
+     .shop-info p, .shop-info .shop-info-block { font-size: 0.9rem; }
+     .review-section h2 { font-size: 1.5rem; }
+}

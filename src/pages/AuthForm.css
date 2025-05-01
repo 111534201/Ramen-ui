@@ -1,0 +1,226 @@
+/* src/pages/AuthForm.css (移除外層預覽邊框版本) */
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: calc(100vh - 120px);
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    background-color: #f4f4f4;
+}
+
+.auth-form-wrapper {
+    background-color: #fff;
+    padding: 2.5rem 3rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+
+/* 店家註冊表單可能需要更寬 */
+.shop-signup-container .shop-form-wrapper {
+    max-width: 650px;
+}
+
+
+.auth-form-wrapper h2 {
+    margin-bottom: 1.8rem;
+    color: #333;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.auth-form .form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.auth-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.auth-form input[type="text"],
+.auth-form input[type="email"],
+.auth-form input[type="password"],
+.auth-form input[type="tel"],
+.auth-form textarea,
+.auth-form input[type="file"]
+{
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease;
+    margin-top: 0.2rem;
+}
+
+.auth-form input[type="file"] {
+    padding: 0.5rem 1rem;
+    line-height: 1.5;
+}
+.auth-form input[type="file"]::file-selector-button {
+    margin-right: 1rem;
+    padding: 0.6rem 1rem;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+.auth-form input[type="file"]::file-selector-button:hover {
+     background-color: #ddd;
+}
+
+
+.auth-form input:focus,
+.auth-form textarea:focus {
+    outline: none;
+    border-color: #ff6347;
+    box-shadow: 0 0 0 2px rgba(255, 99, 71, 0.2);
+}
+
+.auth-form fieldset {
+    border: 1px solid #e0e0e0;
+    padding: 1.5rem 1.8rem;
+    margin-bottom: 2rem;
+    border-radius: 6px;
+}
+.auth-form legend {
+    padding: 0 0.8rem;
+    font-weight: 600;
+    color: #444;
+    font-size: 1.1rem;
+}
+
+.auth-form small {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: 0.85rem;
+    color: #777;
+}
+
+
+.auth-form .error-message {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 0.8rem 1rem;
+    border: 1px solid #e57373;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.auth-form .success-message {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    padding: 0.8rem 1rem;
+    border: 1px solid #a5d6a7;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+
+.auth-form .submit-button {
+    width: 100%;
+    padding: 0.9rem 1.5rem;
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 1rem;
+}
+
+.auth-form .submit-button:hover:not(:disabled) {
+    background-color: #e55337;
+}
+
+.auth-form .submit-button:disabled {
+    background-color: #ffab91;
+    cursor: not-allowed;
+}
+
+.auth-switch {
+    margin-top: 1.8rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.auth-switch a {
+    color: #ff6347;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-switch a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+     .shop-signup-container .shop-form-wrapper {
+        max-width: 90%;
+    }
+}
+@media (max-width: 500px) {
+    .auth-form-wrapper {
+        padding: 2rem 1.5rem;
+        max-width: 90%;
+    }
+    .auth-form-wrapper h2 {
+        font-size: 1.6rem;
+    }
+}
+
+
+/* ============ 圖片預覽樣式 (已移除外層容器邊框) ============ */
+
+.photo-previews {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 15px;
+  padding: 10px;
+  /* border: 1px dashed #ddd; */ /* <--- 移除或註解掉這一行 */
+  border-radius: 4px;
+  min-height: 50px;
+  background-color: #fafafa;
+}
+
+.photo-previews p {
+  width: 100%;
+  margin: 0 0 10px 0;
+  font-size: 0.9em;
+  color: #555;
+  font-weight: 500;
+  text-align: left;
+}
+
+.photo-preview-item {
+  /* 使用百分比設定大小 */
+  max-width: 70%;    /* 您可以修改這個值 */
+  height: auto;        /* 高度自動 */
+
+  /* 其他樣式 */
+  margin: 8px;
+  border: 1px solid #ccc; /* <-- 保留單張圖片的邊框 */
+  border-radius: 4px;
+  vertical-align: middle;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  display: inline-block;
+}
